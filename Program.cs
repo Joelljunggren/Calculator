@@ -76,16 +76,12 @@ void Uträkning()
 	{
         switch (operate)
         {
-            //ALLA CASES KAN VARA METODER FÖR TYDLIGHET AV KOD
             case '*':
                 sum = number1 * number2;
                 Console.WriteLine($"{number1} * {number2} = {sum}");
                 calculations.Add($"{number1} * {number2} = {sum}");
                 break;
             case '/':
-                //IF DELA MED 0, SÄG IFRÅN, LADDA OM
-                //GÖR OM DETTA TILL EN METOD
-
                 if (number1 == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -138,7 +134,7 @@ void Uträkning()
 void Uträkningslista()
 {
 	Console.Clear();
-	Console.WriteLine("Nedanför står en lista på svaren av utförda uträkningar: ");
+	Console.WriteLine("Nedanför står en lista på alla utförda uträkningar: ");
 	foreach (var calculation in calculations)
 	{
 		Console.WriteLine($"\n{calculation}");
@@ -147,16 +143,4 @@ void Uträkningslista()
     Console.WriteLine("\nTryck på en knapp för att återvända till menyn");
     Console.ReadKey();
     Console.Clear();
-}
-
-void Divide()
-{
-
-}
-
-void Multiplication()
-{
-    sum = number1 * number2;
-    Console.WriteLine($"{number1} * {number2} = {sum}");
-    calculations.Add($"{number1} * {number2} = {sum}");
 }
