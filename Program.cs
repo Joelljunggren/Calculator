@@ -63,16 +63,24 @@ void Uträkning()
 	bool calculating = true;
 	Console.Clear();
 	Console.Write("Mata in ditt första tal: ");
-	number1 = double.Parse(Console.ReadLine());
-	//TRY CATCH HÄR FÖR FELHANTERING
-	Console.Write("\nVälj operator ( * , / , + , - ) : ");
+    while (!double.TryParse(Console.ReadLine(), out number1))
+    {
+        Console.Write("En siffra behövs: ");
+    }
+    Console.Write("\nVälj operator ( * , / , + , - ) : ");
 	var operate = char.Parse(Console.ReadLine());
-    //TRY CATCH HÄR FÖR FELHANTERING
+    //Det här tvingar fram ett extra knapptryck, men jag vet inte var jag bör deklarera operate för att få bort det.
+    while(!char.TryParse(Console.ReadLine(), out operate))
+    {
+        Console.Write("Välj mellan  * , / , + , - : ");
+    }
     Console.Write("\nNästa tal tack: ");
-	number2 = double.Parse(Console.ReadLine());
-	//TRY CATCH HÄR FÖR FELHANTERING
+    while (!double.TryParse(Console.ReadLine(), out number2))
+    {
+        Console.Write("En siffra behövs: ");
+    }
 
-	while (calculating)
+    while (calculating)
 	{
         switch (operate)
         {
