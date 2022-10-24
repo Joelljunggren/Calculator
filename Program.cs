@@ -10,9 +10,6 @@
 //Fråga användaren om den vill avsluta eller fortsätta.
 
 
-//SKIT LIGGER PÅ FEL STÄLLE.
-//BEHÖVER FÅ TILL SÅ ATT PROGRAMMET FRÅGAR OM MAN VILL GÖRA EN NY UTRÄKNING
-//DELA 0 MED 0 CATCH
 
 bool keepAlive = true;
 double number1 = 0;
@@ -66,13 +63,13 @@ void Uträkning()
 	bool calculating = true;
 	Console.Clear();
 	Console.Write("Mata in ditt första tal: ");
-	var number1 = double.Parse(Console.ReadLine());
+	number1 = double.Parse(Console.ReadLine());
 	//TRY CATCH HÄR FÖR FELHANTERING
 	Console.Write("\nVälj operator ( * , / , + , - ) : ");
 	var operate = char.Parse(Console.ReadLine());
     //TRY CATCH HÄR FÖR FELHANTERING
     Console.Write("\nNästa tal tack: ");
-	var number2 = double.Parse(Console.ReadLine());
+	number2 = double.Parse(Console.ReadLine());
 	//TRY CATCH HÄR FÖR FELHANTERING
 
 	while (calculating)
@@ -81,16 +78,13 @@ void Uträkning()
         {
             //ALLA CASES KAN VARA METODER FÖR TYDLIGHET AV KOD
             case '*':
-                var sum = number1 * number2;
+                sum = number1 * number2;
                 Console.WriteLine($"{number1} * {number2} = {sum}");
                 calculations.Add($"{number1} * {number2} = {sum}");
                 break;
             case '/':
                 //IF DELA MED 0, SÄG IFRÅN, LADDA OM
                 //GÖR OM DETTA TILL EN METOD
-                sum = number1 / number2;
-                Console.WriteLine($"{number1} / {number2} = {sum}");
-                calculations.Add($"{number1} / {number2} = {sum}");
 
                 if (number1 == 0)
                 {
@@ -108,6 +102,9 @@ void Uträkning()
                     Console.Write("Ändra siffra två: ");
                     number2 = double.Parse(Console.ReadLine());
                 }
+                sum = number1 / number2;
+                Console.WriteLine($"{number1} / {number2} = {sum}");
+                calculations.Add($"{number1} / {number2} = {sum}");
                 break;
             case '+':
                 sum = number1 + number2;
@@ -125,17 +122,15 @@ void Uträkning()
         }
         Console.WriteLine("Vill du göra en ny uträkning? (Y/N): ");
         var goAgain = Console.ReadLine().ToLower();
-        if(goAgain == "n")
+        if (goAgain == "y")
         {
             Console.Clear();
-            calculating = false;
-        }
-        if(goAgain == "y")
-        {
             Uträkning();
         }
-        //Fråga om att göra ny uträkning eller gå till menyn.
-
+        else
+            Console.Clear();
+            calculating = false;
+            return;
     }
 }
 
@@ -149,10 +144,19 @@ void Uträkningslista()
 		Console.WriteLine($"\n{calculation}");
 	}
 
-	//TRYCK PÅ EN KNAPP FÖR ATT ÅTERGÅ TILL MENYN
+    Console.WriteLine("\nTryck på en knapp för att återvända till menyn");
+    Console.ReadKey();
+    Console.Clear();
 }
 
 void Divide()
 {
 
+}
+
+void Multiplication()
+{
+    sum = number1 * number2;
+    Console.WriteLine($"{number1} * {number2} = {sum}");
+    calculations.Add($"{number1} * {number2} = {sum}");
 }
