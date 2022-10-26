@@ -60,6 +60,7 @@ while (keepAlive)
 
 void Uträkning()
 {
+    char operate;
 	bool calculating = true;
 	Console.Clear();
 	Console.Write("Mata in ditt första tal: ");
@@ -68,9 +69,7 @@ void Uträkning()
         Console.Write("En siffra behövs: ");
     }
     Console.Write("\nVälj operator ( * , / , + , - ) : ");
-	var operate = char.Parse(Console.ReadLine());
-    //Det här tvingar fram ett extra knapptryck, men jag vet inte var jag bör deklarera operate för att få bort det.
-    while(!char.TryParse(Console.ReadLine(), out operate))
+    while (!char.TryParse(Console.ReadLine(), out operate))
     {
         Console.Write("Välj mellan  * , / , + , - : ");
     }
@@ -142,12 +141,13 @@ void Uträkning()
 void Uträkningslista()
 {
 	Console.Clear();
-	Console.WriteLine("Nedanför står en lista på alla utförda uträkningar: ");
+    //IF TOM, SKRIV ATT DEN ÄR TOM
+
+    Console.WriteLine("Nedanför står en lista på alla utförda uträkningar: ");
 	foreach (var calculation in calculations)
 	{
 		Console.WriteLine($"\n{calculation}");
 	}
-
     Console.WriteLine("\nTryck på en knapp för att återvända till menyn");
     Console.ReadKey();
     Console.Clear();
