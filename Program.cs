@@ -26,6 +26,7 @@ while (keepAlive)
         Console.WriteLine("2. Vill du visa alla gjorda uträkningar?");
         Console.WriteLine("3: Avsluta programmet.");
         var choice = int.Parse(Console.ReadLine() ?? "");
+        //var choice = Console.ReadKey();
 
 
         switch (choice)
@@ -84,40 +85,16 @@ void Uträkning()
         switch (operate)
         {
             case '*':
-                sum = number1 * number2;
-                Console.WriteLine($"{number1} * {number2} = {sum}");
-                calculations.Add($"{number1} * {number2} = {sum}");
+                Multiplication();
                 break;
             case '/':
-                if (number1 == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Du kan inte dela med 0.");
-                    Console.ResetColor();
-                    Console.Write("Ändra siffra 1: ");
-                    number1 = double.Parse(Console.ReadLine());
-                }
-                if (number2 == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Du kan inte dela med 0.");
-                    Console.ResetColor();
-                    Console.Write("Ändra siffra två: ");
-                    number2 = double.Parse(Console.ReadLine());
-                }
-                sum = number1 / number2;
-                Console.WriteLine($"{number1} / {number2} = {sum}");
-                calculations.Add($"{number1} / {number2} = {sum}");
+                Division();
                 break;
             case '+':
-                sum = number1 + number2;
-                Console.WriteLine($"{number1} + {number2} = {sum}");
-                calculations.Add($"{number1} + {number2} = {sum}");
+                Addition();
                 break;
             case '-':
-                sum = number1 - number2;
-                Console.WriteLine($"{number1} - {number2} = {sum}");
-                calculations.Add($"{number1} - {number2} = {sum}");
+                Subtraction();
                 break;
             default:
                 Console.WriteLine("Felaktig inmatning.\n");
@@ -141,14 +118,62 @@ void Uträkning()
 void Uträkningslista()
 {
 	Console.Clear();
-    //IF TOM, SKRIV ATT DEN ÄR TOM
+    if(calculations.Count == 0)
+        Console.WriteLine("Du har inte gjort några uträkningar än.");
 
-    Console.WriteLine("Nedanför står en lista på alla utförda uträkningar: ");
-	foreach (var calculation in calculations)
-	{
-		Console.WriteLine($"\n{calculation}");
-	}
+    else
+    {
+        Console.WriteLine("Nedanför står en lista på alla utförda uträkningar: ");
+        foreach (var calculation in calculations)
+        {
+            Console.WriteLine($"\n{calculation}");
+        }
+    }
     Console.WriteLine("\nTryck på en knapp för att återvända till menyn");
     Console.ReadKey();
     Console.Clear();
+}
+
+void Multiplication()
+{
+    sum = number1 * number2;
+    Console.WriteLine($"{number1} * {number2} = {sum}");
+    calculations.Add($"{number1} * {number2} = {sum}");
+}
+
+void Addition()
+{
+    sum = number1 + number2;
+    Console.WriteLine($"{number1} + {number2} = {sum}");
+    calculations.Add($"{number1} + {number2} = {sum}");
+}
+
+void Subtraction()
+{
+    sum = number1 - number2;
+    Console.WriteLine($"{number1} - {number2} = {sum}");
+    calculations.Add($"{number1} - {number2} = {sum}");
+}
+
+void Division()
+{
+    if (number1 == 0)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Du kan inte dela med 0.");
+        Console.ResetColor();
+        Console.Write("Ändra siffra 1: ");
+        number1 = double.Parse(Console.ReadLine());
+    }
+    if (number2 == 0)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Du kan inte dela med 0.");
+        Console.ResetColor();
+        Console.Write("Ändra siffra två: ");
+        number2 = double.Parse(Console.ReadLine());
+    }
+    sum = number1 / number2;
+    Console.WriteLine($"{number1} / {number2} = {sum}");
+    calculations.Add($"{number1} / {number2} = {sum}");
 }
