@@ -25,19 +25,17 @@ while (keepAlive)
         Console.WriteLine("1: Vill du börja göra uträkningar?");
         Console.WriteLine("2. Vill du visa alla gjorda uträkningar?");
         Console.WriteLine("3: Avsluta programmet.");
-        var choice = int.Parse(Console.ReadLine() ?? "");
-        //var choice = Console.ReadKey();
+        var choice = Console.ReadKey();
 
-
-        switch (choice)
+        switch (choice.KeyChar)
         {
-            case 1:
+            case '1':
                 Uträkning();
                 break;
-            case 2:
+            case '2':
                 Uträkningslista();
                 break;
-			case 3:
+			case '3':
 				keepAlive = false;
 				Console.Clear();
 				Console.WriteLine("Avslutar programmet...");
