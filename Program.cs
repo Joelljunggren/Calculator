@@ -98,9 +98,10 @@ void Uträkning()
                 Console.WriteLine("Felaktig inmatning.\n");
                 break;
         }
-        Console.WriteLine("Vill du göra en ny uträkning? (Y/N): ");
-        var goAgain = Console.ReadLine().ToLower();
-        if (goAgain == "y")
+        Console.WriteLine("\nVill du göra en ny uträkning?");
+        Console.WriteLine("(Y) För att göra en ny, (N) för att återgå till startmenyn");
+        var goAgain = Console.ReadKey();
+        if (goAgain.KeyChar == 'y')
         {
             Console.Clear();
             Uträkning();
@@ -135,14 +136,14 @@ void Uträkningslista()
 void Multiplication()
 {
     sum = number1 * number2;
-    Console.WriteLine($"{number1} * {number2} = {sum}");
+    Console.WriteLine($"\n{number1} * {number2} = {sum}");
     calculations.Add($"{number1} * {number2} = {sum}");
 }
 
 void Addition()
 {
     sum = number1 + number2;
-    Console.WriteLine($"{number1} + {number2} = {sum}");
+    Console.WriteLine($"\n{number1} + {number2} = {sum}");
     calculations.Add($"{number1} + {number2} = {sum}");
 }
 
@@ -150,7 +151,7 @@ void Subtraction()
 {
     sum = number1 - number2;
     Console.WriteLine($"{number1} - {number2} = {sum}");
-    calculations.Add($"{number1} - {number2} = {sum}");
+    calculations.Add($"\n{number1} - {number2} = {sum}");
 }
 
 void Division()
@@ -158,20 +159,22 @@ void Division()
     if (number1 == 0)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Du kan inte dela med 0.");
+        Console.WriteLine("Du kan inte dela med 0.\n");
         Console.ResetColor();
         Console.Write("Ändra siffra 1: ");
         number1 = double.Parse(Console.ReadLine());
+        Console.Clear();
     }
     if (number2 == 0)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Du kan inte dela med 0.");
+        Console.WriteLine("Du kan inte dela med 0.\n");
         Console.ResetColor();
         Console.Write("Ändra siffra två: ");
         number2 = double.Parse(Console.ReadLine());
+        Console.Clear();
     }
     sum = number1 / number2;
-    Console.WriteLine($"{number1} / {number2} = {sum}");
+    Console.WriteLine($"\n{number1} / {number2} = {sum}");
     calculations.Add($"{number1} / {number2} = {sum}");
 }
