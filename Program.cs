@@ -1,16 +1,4 @@
-﻿// Välkomnande meddelande
-// En lista för att spara historik för räkningar
-// Användaren matar in tal och matematiska operation
-//OBS! Användaren måsta mata in ett tal för att kunna ta sig vidare i programmet!
-// Ifall användaren skulle dela 0 med 0 visa Ogiltig inmatning!
-// Lägga resultat till listan
-//Visa resultat
-//Fråga användaren om den vill visa tidigare resultat.
-//Visa tidigare resultat
-//Fråga användaren om den vill avsluta eller fortsätta.
-
-
-
+﻿
 bool keepAlive = true;
 double number1 = 0;
 double number2 = 0;
@@ -178,3 +166,20 @@ void Division()
     Console.WriteLine($"\n{number1} / {number2} = {sum}");
     calculations.Add($"{number1} / {number2} = {sum}");
 }
+
+
+//Jag valde att lägga nästan allting i metoder för att kunna ha en lite bättre överblick på koden.
+
+//Till startmenyn valde jag en switch, då det för mig är tydligare än om man använder många olika if statements. Switchen aktiveras genom en readkey så att det inte krävs
+//att man trycker på enter efter att man har valt vad man vill gå in på.
+
+//Uträkningsmetoden är ganska krånglig, den går säkerligen att förenkla.
+//Valde att köra en liknande switch case som för startmenyn, men istället för att använda keyChar vid val så använde jag en char så att du kan sudda och ändra dig om du råkar trycka på fel knapp.
+//Placerade tryParse som argument i en while loop vid varje input, så varje gång den får "fel" sorts input ställer den samma fråga igen, tills det blir rätt.
+
+//Förbättringar
+//Jag skulle gärna ha implementerat ett sätt där man kan skriva in hela talet på en rad. Men jag kände mig inte tillräckligt säker på hur jag skulle använda indexOf för att göra det.
+//Samt att man kunde ha flera olika operatorer på samma rad, i stil med 25*2+3.
+//Metoden för division kan nog göras på ett annat sätt än att placera in den i två olika if-satser, men var osäker på vad jag skulle kunna använda istället, så den fick vara kvar.
+//Ville dock se till så att man inte behövde skriva om hela uträkningen, utan bara ett av talen. Det är därför den ser ut som den gör just nu istället för if (number1 && number2 == 0).
+//Sista förbättringen jag kan komma på är väl att den inte är så speciellt estetiskt tilltalande.
